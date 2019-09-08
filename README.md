@@ -46,7 +46,7 @@ pip install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.1/ima
 cd image_ai
 ```
 
-Put downloaded models into ./media/models
+Put downloaded [models](https://cloud.tsinghua.edu.cn/d/b084af7c66fa4fdd9db1/) into ./media/models
 
 Run server in **localhost(127.0.0.1)**, default **port 8000**
 
