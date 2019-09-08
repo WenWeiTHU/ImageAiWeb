@@ -2,7 +2,7 @@
 A Web service based on the HTTP protocol provides a Web API to add, delete, and change specified data to the database based on the basic registration, login, and logout functions.
 ## Author
 
-* **Name**: Liu Yong (2017013578), Liu Wei (2017013590).
+* **Name**: Wendy, Liu, Wenwei.
 
 
 ## Environment
