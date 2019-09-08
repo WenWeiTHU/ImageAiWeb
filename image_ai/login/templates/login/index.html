@@ -1,0 +1,66 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}Index{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/log.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Welcome, {{ username }}!</h1>
+{% if message %}
+<div class="alert alert-warning">{{ message }}</div>
+{% endif %}
+<div class="container-fluid">
+    <h3 class="text-left">Update A File to Predict: </h3>
+    <form action="/index/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class='input-lg' type="file" name="imgfile" style="display: inline">
+            <button class="btn btn-primary center-block" type="submit" style="display: inline">Upload</button>
+        </div>
+    </form>
+</div>
+<hr>
+
+<div class="container-fluid">
+    <h3 class="text-left">Update An URL to Predict:</h3>
+    <form action="/index/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">URL: </label>
+            <input type="text" name='imgurl' class="form-control" id="id_img_url" placeholder="ImgURL" autofocus
+                required style="display: inline;width: 80%">
+            <button class="btn btn-primary center-block" type="submit" style="display: inline">Upload</button>
+        </div>
+    </form>
+</div>
+
+<hr>
+<div class="container-fluid">
+    <h3 class="text-left">View Your Record:</h3>
+    <a href="/record/{{ username }}"><button class="btn btn-block btn-default">Go</button></a>
+</div>
+<hr>
+
+<div class="container-fluid">
+    {% if record %}
+    <h3 class="text-left">Objects Detected by ResNet: [Original vs Detected]</h3>
+    <img src="{{ record.handImg.url }}" width="45%" />
+    <img src="{{ record.imgDetect.url }}" width="45%" style="float: right;" />
+    <hr>
+    <h3 class="text-left">Categories Predicted by ResNet: </h3>
+    <ul class="list-group">
+        {% for cate, poss in result_res.items %}
+        <li class="list-group-item"><strong>{{ forloop.counter }}. {{ cate }}: </strong></strong>{{ poss }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h3 class="text-left">Categories Predicted by SqueezeNet: </h3>
+    <ul class="list-group">
+        {% for cate, poss in result_sqz.items %}
+        <li class="list-group-item"><strong>{{ forloop.counter }}. {{ cate }}: </strong></strong>{{ poss }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

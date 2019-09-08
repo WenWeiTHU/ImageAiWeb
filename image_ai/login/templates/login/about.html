@@ -1,0 +1,67 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/log.css' %}">
+{% endblock %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<h1 class="text-center">About us</h1>
+<hr>
+<div class="lead" style="font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    font-size: 20px ;text-indent: 25px; margin-left: 16%; margin-right: 16%">
+    <p>This is a simple website developed with <a href="https://www.python.org/" target="_blank">Python3</a>
+        that provides users with deep learning-based image processing services.
+    </p>
+    <p>
+        The website uses <a href="https://www.djangoproject.com/" target="_blank">django</a> architecture and
+        its image recognition service is based on <a href="https://imageai-cn.readthedocs.io/zh_CN/latest/"
+            target="_blank">imageai</a>.
+        For user-uploaded images or URIs, this site uses the hottest <a href="https://arxiv.org/abs/1512.03385"
+            target="_blank">ResNet</a>
+        and <a href="https://arxiv.org/abs/1602.07360" target="_blank">SqueezeNet</a> for image classification
+        (<a href="https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_weights_tf_dim_ordering_tf_kernels.h5"
+            , target="_blank">ResNet50</a>
+        by Microsoft Research - model size: 98 MB, with faster prediction time, higher accuracy;
+        <a href="https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/squeezenet_weights_tf_dim_ordering_tf_kernels.h5"
+            target="_blank">SqueezeNet</a>
+        - model size: 4.82 MB, with the shortest prediction time and moderate accuracy). And for object detection ,we use the
+        most advanced
+        <a href="https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5"
+            target="_blank">RetinaNet</a>,
+        we also plan to add more models' supports and algorithms in subsequent versions.
+    </p>
+    <p>
+        When you use this site, please enter the registration interface first. After <a href="/logon/">logon</a>
+        successfully, the site will automatically jump to the <a href="/login/">login</a> interface.
+        After entering the <a href="/index/">homepage</a>, you can choose to upload an image or a valid web page image
+        link, after which the image will be processed in the backend.
+        Then finally it will return the results consists of three parts: the type prediction of the image by two
+        models(including the category and corresponding probability,
+        the default returns the five largest types of possibilities), and the output of the image after the objects are
+        detected (labeled on the basis of the original image
+        with objects detected and its confidence level). When you'd like to quit safety, please click the <a
+            href="/logout/">logout</a> button.
+    </p>
+    <p>
+        On the home page, you can also query your history records or select specific records filter by time period, or
+        simply delete selected ones.
+    </p>
+    <p>
+        If you would like to join us or become a system <a href="/admin/login/">administrator</a>, please <a
+            href="https://github.com/WenWeiTHU/image_ai_web" target="_blank">contact us</a>.
+        Finally, wish you a happy time on this website : )
+    </p>
+    <hr>
+    <div class="text-right" style="font-size: 14px">
+        <address>
+            <strong>Wendy, Liu: </strong>
+            <a href="mailto:liuwei.wendy17@gmail.com">liuwei.wendy17@gmail.com</a>
+            <br>
+            <strong>Wenwei: </strong>
+            <a href="mailto:liuyong1095556447@gmail.com">liuyong1095556447@gmail.com</a>
+            <br>Tsinghua University, School of Software
+        </address>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}Admin{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/log.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Welcome, Administrator!</h1>
+{% if message %}
+<div class="alert alert-warning">{{ message }}</div>
+{% endif %}
+
+<h3 class="text-left">All users: </h3>
+<ul class="list-group">
+    {% for name, count in users_info.items %}
+    <li class="list-group-item"><span class="badge">{{ count }}</span><a href='{% url 'record' name %}'>{{ name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
